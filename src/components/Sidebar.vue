@@ -4,7 +4,7 @@
       <v-card-title class="white--text" style="font-size: 32px; letter-spacing: .5px;">EVENTOO</v-card-title>  
     </v-card>
 
-    <v-list nav expand tile>
+    <v-list dense nav expand tile>
       <v-list-item v-for="(item, i) in items" :key="i" link :to="`${item.to}`" flat>
         <v-list-item-icon class="pl-sm-3">
           <v-icon>{{ item.icon }}</v-icon>
