@@ -34,7 +34,6 @@ export default {
       { title: 'Events', icon: 'mdi-calendar', to: '/events' },
       { title: 'Users', icon: 'mdi-account-multiple', to: '/users' },
       { title: 'Notifications', icon: 'mdi-bell', to: '/notifications' },
-      { title: 'Messages', icon: 'mdi-chat', to: '/messages' },
       { title: 'Profile', icon: 'mdi-account', to: '/profile' },
       { title: 'Settings', icon: 'mdi-help-box', to: '/settings' },
     ],
