@@ -3,7 +3,6 @@
     <v-card height="125" class="transparent d-flex flex-column justify-center align-center" tile elevation='0'>
       <v-card-title class="white--text" style="font-size: 32px; letter-spacing: .5px;">EVENTOO</v-card-title>  
     </v-card>
-
     <v-list dense nav expand tile>
       <v-list-item v-for="(item, i) in items" :key="i" link :to="`${item.to}`" flat>
         <v-list-item-icon class="pl-sm-3">
@@ -31,8 +30,9 @@ export default {
     drawer: true,
     items: [
       { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/' },
-      { title: 'Events', icon: 'mdi-calendar', to: '/events' },
+      { title: 'Movies', icon: 'mdi-calendar', to: '/movies' },
       { title: 'Users', icon: 'mdi-account-multiple', to: '/users' },
+      { title: 'Table Clone', icon: 'mdi-content-copy', to: '/table-clone' },
       { title: 'Notifications', icon: 'mdi-bell', to: '/notifications' },
       { title: 'Profile', icon: 'mdi-account', to: '/profile' },
       { title: 'Settings', icon: 'mdi-help-box', to: '/settings' },

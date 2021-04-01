@@ -1,67 +1,16 @@
 <template>
   <v-container fluid>
-    <v-card elevation="0" tile style="box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .25) !important;">
-      <v-card-title>
-        <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" hide-details />
-        <v-spacer />
-        <v-btn color="primary">
-          <v-icon left size="20">mdi-plus</v-icon>
-          <span>add contact</span>  
-        </v-btn>
-      </v-card-title>  
-      <v-card-text>
-        <v-data-table :headers="headers" :items="users" :search="search" :page.sync="page" :items-per-page="itemsPerPage" hide-default-footer @page-count="pageCount = $event">
-          <template v-slot:item.sno="{ item }">
-            <v-chip outlined small class="caption font-weight-bold"> {{ getSNO(item) + 1 }}</v-chip>
-          </template>
-          <template v-slot:item.name="{ item }">
-            <div class="d-flex align-center my-2">
-              <v-avatar>
-                <v-img :src="item.img" :lazy-src="item.img" :alt="item.name" />  
-              </v-avatar>
-              <div class="ml-2">
-                <div style="font-size: 16px; font-weight: 500; line-height: 1;">{{ item.name }}</div>  
-                <div class="caption grey--text mt-1" style="line-height: 1;">{{ item.email }}</div>  
-              </div>  
-            </div>
-          </template>
-          <template v-slot:item.date="{ item }">
-            <v-icon color="black">mdi-calendar</v-icon>
-            <span class="caption grey--text ml-1">{{ item.date }}</span>
-          </template>
-          <template v-slot:item.address="{ item }">
-            <v-icon color="black">mdi-map-marker</v-icon>
-            <span class="caption grey--text ml-1">{{ item.address }}</span>
-          </template>
-          <template v-slot:item.actions="{ item }">
-            <div>
-              <v-btn icon @click="view(item)" color="primary">
-                <v-icon small>mdi-eye</v-icon>
-              </v-btn> 
-              <v-btn icon @click="view(item)" color="success" class="mx-1">
-                <v-icon small>mdi-pencil</v-icon>
-              </v-btn> 
-              <v-btn icon @click="view(item)" color="red">
-                <v-icon small>mdi-delete</v-icon>
-              </v-btn>  
-            </div>
-          </template>
-        </v-data-table>  
-      </v-card-text>
-      <div class="text-center pb-3">
-        <v-pagination v-model="page" :length="pageCount" />
-      </div>  
-    </v-card>
+    <DataTable :headers="headers" :items="users" :actions="actions" />
   </v-container>  
 </template>
 
 <script>
+import DataTable from '../components/DataTable'
 export default {
+  components: {
+    DataTable
+  },
   data: () => ({
-    search: '',  
-    page: 1,
-    pageCount: 0,
-    itemsPerPage: 5,
     headers: [
       { text: 'S.No', align: 'start', value: 'sno' },
       { text: 'User', value: 'name' },
@@ -82,15 +31,12 @@ export default {
       { name: 'Emma Stone', img: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/18/11/emma-stone.jpg', email: 'emmastone@gmail.com', date: 'November 6, 1988', address: 'Scottsdale, Arizona, US' },
       { name: 'Aishwarya Rai Bachchan', img: 'https://i2.cinestaan.com/image-bank/1500-1500/174001-175000/174550.jpg', email: 'aishwarya@gmail.com', date: 'November 1, 1973', address: 'Mangalore, India' },
       { name: 'Deepika Padukone', img: 'https://eskipaper.com/images/deepika-padukone-wallpaper-4.jpg', email: 'deepika@gmail.com', date:'January 5, 1986', address: 'Copenhagen, Denmark' }
-    ]  
+    ],
+    actions: [
+      { name: 'View', icon: 'mdi-eye', color: 'primary' },
+      { name: 'Edit', icon: 'mdi-pencil', color: 'success' },
+      { name: 'Delete', icon: 'mdi-delete', color: 'red' }
+    ]
   }),
-  methods: {
-    getSNO(user) {
-      return this.users.indexOf(user)  
-    },
-    view(item) {
-      console.log(item)  
-    }
-  }
 }
 </script>
