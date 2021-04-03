@@ -3,7 +3,7 @@
     <v-card height="125" class="transparent d-flex flex-column justify-center align-center" tile elevation='0'>
       <v-card-title class="white--text" style="font-size: 32px; letter-spacing: .5px;">EVENTOO</v-card-title>  
     </v-card>
-    <v-list dense nav expand tile>
+    <v-list dense nav expand tile shaped class="pl-0">
       <v-list-item v-for="(item, i) in items" :key="i" link :to="`${item.to}`" flat>
         <v-list-item-icon class="pl-sm-3">
           <v-icon>{{ item.icon }}</v-icon>
