@@ -33,6 +33,7 @@
         <tr>
           <td colspan="4">Total</td>
           <td><input type="number" v-model="total" readonly placeholder="Total"></td>
+          <td></td>
         </tr>
         <tr>
           <td colspan="4">Discount</td>
